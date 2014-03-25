@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MyAFWrapper.h"
 
 @interface ViewController ()
 
@@ -17,13 +18,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)didTouchButton:(id)sender {
+    NSString *reach = [MyAFWrapper apiIsReachable] ? @"Is reachable" : @"Not reachable";
+    [[[UIAlertView alloc] initWithTitle:@"Reachability status"
+                                message:reach
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
 }
 
 @end
